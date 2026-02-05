@@ -36,16 +36,17 @@
     }
 
     header img {
-        width: 140px;
-        height: 140px;
+        width: 150px;
+        height: 150px;
         border-radius: 50%;
         object-fit: cover;
         margin-right: 30px;
         border: 3px solid #006344;
-        transition: transform 0.3s ease;
     }
 
-    header img:hover { transform: scale(1.05); }
+    header div {
+        flex: 1;
+    }
 
     header h1 {
         font-size: 36px;
@@ -112,6 +113,9 @@
     }
     .download-btn:hover { background: #008080; }
 
+    /* ---------- Page Break for PDF ---------- */
+    .page-break { page-break-before: always; }
+
     /* ---------- Responsive ---------- */
     @media (max-width: 768px) {
         header { flex-direction: column; text-align: center; }
@@ -124,6 +128,7 @@
         .container { box-shadow: none; margin: 0; padding: 0; border-radius: 0; }
         .job-content { display: block !important; }
         .download-btn { display: none; }
+        .page-break { display: block; page-break-before: always; }
     }
 </style>
 </head>
@@ -201,24 +206,6 @@
                     <li>Post fees, monitor risk controls, and complete management reports.</li>
                 </ul>
             </div>
-
-            <h3 onclick="toggleJob(this)">Officer, Market Surveillance Dept. – Securities Commission of the Bahamas <span>▼</span></h3>
-            <div class="job-content">
-                <div class="company-date">Dec 2006 – Aug 2008 | Nassau, Bahamas</div>
-                <ul>
-                    <li>Review and analyze financial statements and other documents.</li>
-                    <li>Respond to market enquiries and prepare status reports.</li>
-                </ul>
-            </div>
-
-            <h3 onclick="toggleJob(this)">General Administrative Assistant – Montaque Securities International Ltd. <span>▼</span></h3>
-            <div class="job-content">
-                <div class="company-date">Dec 2005 – Nov 2006 | Nassau, Bahamas</div>
-                <ul>
-                    <li>Data entry and responding to client enquiries.</li>
-                    <li>Other administrative duties as assigned.</li>
-                </ul>
-            </div>
         </div>
     </section>
 
@@ -233,8 +220,16 @@
         </div>
     </section>
 
-    <!-- Certifications -->
+    <!-- Optional Section -->
     <section>
+        <h2>Awards / Projects / Volunteer</h2>
+        <div class="section-content">
+            <p>Available upon request or can be added here.</p>
+        </div>
+    </section>
+
+    <!-- Page Break Before Certifications -->
+    <section class="page-break">
         <h2>Certifications</h2>
         <div class="section-content">
             <ul>
@@ -243,14 +238,6 @@
                 <li>Introduction to Mutual Funds</li>
                 <li>Professional Development</li>
             </ul>
-        </div>
-    </section>
-
-    <!-- Optional Sections -->
-    <section>
-        <h2>Awards / Projects / Volunteer</h2>
-        <div class="section-content">
-            <p>Available upon request or can be added here.</p>
         </div>
     </section>
 
@@ -294,7 +281,7 @@
         }
     }
 
-    // Download PDF with full options
+    // Download PDF with image and page break fixes
     function downloadPDF(){
         // expand all sections first
         document.querySelectorAll('.job-content').forEach(e => e.style.display = 'block');
@@ -306,9 +293,9 @@
             filename:     'Kerah_Farquharson_Resume.pdf',
             image:        { type: 'jpeg', quality: 1 },
             html2canvas:  { 
-                scale: 3,           // higher resolution
+                scale: 3,
                 scrollY: 0,
-                useCORS: true,      // allows external images
+                useCORS: true,
                 allowTaint: true
             },
             jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
