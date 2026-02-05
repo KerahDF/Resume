@@ -305,15 +305,19 @@
             margin:       0.3,
             filename:     'Kerah_Farquharson_Resume.pdf',
             image:        { type: 'jpeg', quality: 1 },
-            html2canvas:  { scale: 2, scrollY: 0 },
+            html2canvas:  { 
+                scale: 3,           // higher resolution
+                scrollY: 0,
+                useCORS: true,      // allows external images
+                allowTaint: true
+            },
             jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
-            pagebreak:    { mode: ['css', 'legacy'] }
+            pagebreak:    { mode: ['css', 'legacy'], avoid: ['h1','h2','h3','.download-btn'] }
         };
+
         html2pdf().set(opt).from(element).save();
     }
 </script>
 
 </body>
 </html>
-
-
