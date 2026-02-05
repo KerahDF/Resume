@@ -294,13 +294,26 @@
         }
     }
 
-    // Download PDF
+    // Download PDF with full options
     function downloadPDF(){
+        // expand all sections first
+        document.querySelectorAll('.job-content').forEach(e => e.style.display = 'block');
+        document.querySelectorAll('.more-text').forEach(e => e.style.display = 'block');
+
         const element = document.getElementById('resumeContent');
-        html2pdf().from(element).save('Kerah_Farquharson_Resume.pdf');
+        const opt = {
+            margin:       0.3,
+            filename:     'Kerah_Farquharson_Resume.pdf',
+            image:        { type: 'jpeg', quality: 1 },
+            html2canvas:  { scale: 2, scrollY: 0 },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
+            pagebreak:    { mode: ['css', 'legacy'] }
+        };
+        html2pdf().set(opt).from(element).save();
     }
 </script>
 
 </body>
 </html>
+
 
