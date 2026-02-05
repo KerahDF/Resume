@@ -3,308 +3,231 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kerah D. Farquharson – Interactive Resume</title>
-<!-- Google Fonts -->
+<title>Kerah D. Farquharson – Resume</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-<!-- html2pdf library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
 <style>
-    /* ---------- Base Styles ---------- */
-    body {
-        font-family: 'Lato', sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #f4f4f4;
-        color: #1a1a2e;
-    }
-    a { color: #006344; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+body {
+    font-family: 'Lato', sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    color: #1a1a2e;
+}
 
-    .container {
-        max-width: 900px;
-        margin: 30px auto;
-        background: #fff;
-        padding: 40px;
-        border-radius: 10px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+}
 
-    header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 30px;
-    }
+header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
 
-    header img {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-right: 30px;
-        border: 3px solid #006344;
-    }
+header img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #006344;
+    margin-right: 30px;
+}
 
-    header div {
-        flex: 1;
-    }
+header h1 {
+    margin: 0;
+    font-size: 36px;
+    color: #006344;
+}
 
-    header h1 {
-        font-size: 36px;
-        margin: 0;
-        color: #006344;
-    }
+.contact {
+    font-size: 14px;
+    color: #555;
+}
 
-    .contact {
-        margin-top: 5px;
-        font-size: 14px;
-        color: #555;
-    }
+h2 {
+    font-size: 22px;
+    border-bottom: 2px solid #006344;
+    padding-bottom: 6px;
+    margin-top: 35px;
+}
 
-    h2 {
-        font-size: 24px;
-        border-bottom: 2px solid #006344;
-        padding-bottom: 5px;
-        margin-top: 40px;
-        margin-bottom: 15px;
-    }
+h3 {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
 
-    h3 {
-        font-size: 18px;
-        margin-top: 20px;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+.job-content {
+    display: none;
+    margin-left: 20px;
+}
 
-    .job-content {
-        display: none;
-        margin-left: 20px;
-    }
+ul { padding-left: 20px; }
+li { margin-bottom: 8px; }
 
-    ul { padding-left: 20px; }
-    li { margin-bottom: 8px; }
+.skills span {
+    display: inline-block;
+    background: #006344;
+    color: #fff;
+    padding: 6px 12px;
+    margin: 4px;
+    border-radius: 20px;
+    font-size: 13px;
+}
 
-    .skills span {
-        display: inline-block;
-        background: #006344;
-        color: #fff;
-        padding: 5px 12px;
-        margin: 3px;
-        border-radius: 20px;
-        font-size: 13px;
-        transition: background 0.3s ease;
-    }
-    .skills span:hover { background: #008080; }
+.download-btn {
+    background: #006344;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    margin-top: 25px;
+}
 
-    .section-content { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
-    .section-content.visible { opacity: 1; transform: translateY(0); }
+.download-btn:hover {
+    background: #008080;
+}
 
-    /* ---------- Buttons ---------- */
+/* ---------- PDF ONLY ---------- */
+.pdf-hide {
+    display: none !important;
+}
+
+/* ---------- PRINT ---------- */
+@media print {
     .download-btn {
-        background: #006344;
-        color: #fff;
-        padding: 10px 20px;
-        border-radius: 25px;
-        display: inline-block;
-        margin-top: 15px;
-        cursor: pointer;
-        transition: background 0.3s ease;
+        display: none !important;
     }
-    .download-btn:hover { background: #008080; }
-
-    /* ---------- Page Break for PDF ---------- */
-    .page-break { page-break-before: always; }
-
-    /* ---------- Responsive ---------- */
-    @media (max-width: 768px) {
-        header { flex-direction: column; text-align: center; }
-        header img { margin: 0 0 20px 0; }
+    .job-content {
+        display: block !important;
     }
-
-    /* ---------- Print ---------- */
-    @media print {
-        body { background: none; }
-        .container { box-shadow: none; margin: 0; padding: 0; border-radius: 0; }
-        .job-content { display: block !important; }
-        .download-btn { display: none; }
-        .page-break { display: block; page-break-before: always; }
-    }
+}
 </style>
 </head>
+
 <body>
 
 <div class="container" id="resumeContent">
-    <!-- Header -->
-    <header>
-        <img src="https://i.imgur.com/e6zHLFM.jpeg" alt="Kerah D. Farquharson Photo">
-        <div>
-            <h1>Kerah D. Farquharson</h1>
-            <div class="contact">
-                P.O. Box CB-12537, Nassau, Bahamas<br>
-                <a href="mailto:kdfarquharson@gmail.com">kdfarquharson@gmail.com</a> | <a href="tel:5572029">Mobile: 557-2029</a>
-            </div>
+
+<header>
+    <img src="https://i.imgur.com/e6zHLFM.jpeg" alt="Kerah Farquharson">
+    <div>
+        <h1>Kerah D. Farquharson</h1>
+        <div class="contact">
+            P.O. Box CB-12537, Nassau, Bahamas<br>
+            <a href="mailto:kdfarquharson@gmail.com">kdfarquharson@gmail.com</a> | 557-2029
         </div>
-    </header>
-
-    <!-- Professional Summary -->
-    <section>
-        <h2>Professional Summary</h2>
-        <div class="section-content" id="summary">
-            <p>Results-driven, experienced professional in brokerage/trading and customer services. Critical thinker seeking opportunities to utilize analytical, organizational, and interpersonal skills in an established institution offering growth and advancement.</p>
-            <p class="more-text" style="display:none;">Highly skilled in client relationship management, trade execution, risk analysis, and financial reporting. Dedicated to delivering precise, timely, and professional service.</p>
-            <span class="download-btn" onclick="toggleSummary()">Read More / Less</span>
-        </div>
-    </section>
-
-    <!-- Skills -->
-    <section>
-        <h2>Skills</h2>
-        <div class="section-content skills">
-            <strong>Technical Skills:</strong> 
-            <span>MS Word</span><span>MS Excel</span><span>MS PowerPoint</span><span>MS Publisher</span><span>MS Outlook</span><span>Advent Software</span><span>Mimics Software</span><span>FA Software</span><br><br>
-            <strong>Soft Skills:</strong>
-            <span>Critical Thinking</span><span>Client Relations</span><span>Problem Solving</span><span>Organizational Skills</span>
-        </div>
-    </section>
-
-    <!-- Experience -->
-    <section>
-        <h2>Experience</h2>
-        <div class="section-content">
-            <h3 onclick="toggleJob(this)">Manager, Investments – Leno Corporate Services <span>▼</span></h3>
-            <div class="job-content">
-                <div class="company-date">May 2019 – Present | Nassau, Bahamas</div>
-                <ul>
-                    <li>Perform all administrative functions related to trade and client accounts, including execution trades and phone coverage.</li>
-                    <li>Solicitation of transactions through management of client accounts.</li>
-                    <li>Open brokerage, retail, margin, and mutual fund accounts.</li>
-                    <li>Trading BISX listed and over-the-counter stocks.</li>
-                    <li>Track and analyze daily trade volume and trends.</li>
-                    <li>Respond to queries of all account officers to ensure timely service.</li>
-                    <li>Ensure accrued interest and dividend payments are calculated, recorded, and posted.</li>
-                </ul>
-            </div>
-
-            <h3 onclick="toggleJob(this)">Assistant Manager, Wealth Management – FamGuard Group of Companies <span>▼</span></h3>
-            <div class="job-content">
-                <div class="company-date">Feb 2012 – May 2019 | Nassau, Bahamas</div>
-                <ul>
-                    <li>Performed administrative functions related to all trade and client accounts.</li>
-                    <li>Opened brokerage, retail, margin, and mutual fund accounts.</li>
-                    <li>Group Pension administration.</li>
-                    <li>Trading BISX listed and over-the-counter stocks.</li>
-                </ul>
-            </div>
-
-            <h3 onclick="toggleJob(this)">Broker/Securities Trader – CFAL <span>▼</span></h3>
-            <div class="job-content">
-                <div class="company-date">Aug 2008 – Feb 2012 | Nassau, Bahamas</div>
-                <ul>
-                    <li>Execute securities, FX, and money market trades on behalf of clients.</li>
-                    <li>Process contributions, withdrawals, and fund units for all clients.</li>
-                    <li>Post fees, monitor risk controls, and complete management reports.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education -->
-    <section>
-        <h2>Education</h2>
-        <div class="section-content">
-            <p><strong>Bachelor of Arts in Economics with Minor in Spanish</strong><br>
-            Aug 2002 – May 2005 | Acadia University, Nova Scotia, Canada | Concentration: Finance</p>
-            <p><strong>Associates Degree in Banking/Finance</strong><br>
-            Aug 1999 – May 2001 | The College of the Bahamas, Nassau, Bahamas</p>
-        </div>
-    </section>
-
-    <!-- Optional Section -->
-    <section>
-        <h2>Awards / Projects / Volunteer</h2>
-        <div class="section-content">
-            <p>Available upon request or can be added here.</p>
-        </div>
-    </section>
-
-    <!-- Page Break Before Certifications -->
-    <section class="page-break">
-        <h2>Certifications</h2>
-        <div class="section-content">
-            <ul>
-                <li>Certified Financial Planner</li>
-                <li>Series 7</li>
-                <li>Introduction to Mutual Funds</li>
-                <li>Professional Development</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Download Button -->
-    <div style="text-align:center;">
-        <button class="download-btn" onclick="downloadPDF()">Download Resume as PDF</button>
     </div>
+</header>
+
+<section>
+<h2>Professional Summary</h2>
+<p>
+Results-driven professional with extensive experience in brokerage, trading, and wealth management.
+Strong analytical, organizational, and interpersonal skills with a proven ability to manage complex client accounts.
+</p>
+</section>
+
+<section>
+<h2>Skills</h2>
+<div class="skills">
+<span>MS Excel</span><span>MS Word</span><span>PowerPoint</span><span>Advent Software</span>
+<span>Mimics</span><span>FA Software</span><span>Client Relations</span><span>Trade Execution</span>
+</div>
+</section>
+
+<section>
+<h2>Experience</h2>
+
+<h3 onclick="toggleJob(this)">Manager, Investments – Leno Corporate Services ▼</h3>
+<div class="job-content">
+<ul>
+<li>Execute and settle brokerage, margin, and mutual fund trades</li>
+<li>Manage client accounts and trading activity</li>
+<li>Ensure accurate posting of dividends and interest</li>
+<li>Respond to account officer and client queries</li>
+</ul>
 </div>
 
-<!-- ---------- Scripts ---------- -->
+<h3 onclick="toggleJob(this)">Assistant Manager, Wealth Management – FamGuard ▼</h3>
+<div class="job-content">
+<ul>
+<li>Administer group pension plans</li>
+<li>Trade BISX and OTC securities</li>
+<li>Open and maintain investment accounts</li>
+</ul>
+</div>
+
+<h3 onclick="toggleJob(this)">Broker / Securities Trader – CFAL ▼</h3>
+<div class="job-content">
+<ul>
+<li>Execute securities, FX, and money market trades</li>
+<li>Prepare portfolio valuation reports</li>
+<li>Monitor risk controls</li>
+</ul>
+</div>
+
+</section>
+
+<section>
+<h2>Education</h2>
+<p><strong>B.A. Economics (Finance)</strong> – Acadia University</p>
+<p><strong>Associate Degree, Banking & Finance</strong> – College of The Bahamas</p>
+</section>
+
+<section>
+<h2>Awards & Certifications</h2>
+<ul>
+<li>Certified Financial Planner</li>
+<li>Series 7</li>
+<li>Introduction to Mutual Funds</li>
+<li>Professional Development Certifications</li>
+</ul>
+</section>
+
+<div style="text-align:center;">
+<button class="download-btn" onclick="downloadPDF()">Download Resume (PDF)</button>
+</div>
+
+</div>
+
 <script>
-    // Scroll fade-in
-    const sections = document.querySelectorAll('.section-content');
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting){
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
+function toggleJob(el) {
+    const content = el.nextElementSibling;
+    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+}
 
-    sections.forEach(section => observer.observe(section));
+function downloadPDF() {
+    // Hide download button ONLY for PDF
+    document.querySelector('.download-btn').classList.add('pdf-hide');
 
-    // Toggle Professional Summary
-    function toggleSummary(){
-        const moreText = document.querySelector('.more-text');
-        if(moreText.style.display === "none"){
-            moreText.style.display = "block";
-        } else {
-            moreText.style.display = "none";
-        }
-    }
+    // Expand all jobs
+    document.querySelectorAll('.job-content').forEach(e => e.style.display = 'block');
 
-    // Toggle Experience job content
-    function toggleJob(element){
-        const content = element.nextElementSibling;
-        if(content.style.display === "block"){
-            content.style.display = "none";
-        } else {
-            content.style.display = "block";
-        }
-    }
+    const element = document.getElementById('resumeContent');
 
-    // Download PDF with image and page break fixes
-    function downloadPDF(){
-        // expand all sections first
-        document.querySelectorAll('.job-content').forEach(e => e.style.display = 'block');
-        document.querySelectorAll('.more-text').forEach(e => e.style.display = 'block');
+    const opt = {
+        margin: 0.4,
+        filename: 'Kerah_Farquharson_Resume.pdf',
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: { scale: 3, useCORS: true },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
 
-        const element = document.getElementById('resumeContent');
-        const opt = {
-            margin:       0.3,
-            filename:     'Kerah_Farquharson_Resume.pdf',
-            image:        { type: 'jpeg', quality: 1 },
-            html2canvas:  { 
-                scale: 3,
-                scrollY: 0,
-                useCORS: true,
-                allowTaint: true
-            },
-            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
-            pagebreak:    { mode: ['css', 'legacy'], avoid: ['h1','h2','h3','.download-btn'] }
-        };
-
-        html2pdf().set(opt).from(element).save();
-    }
+    html2pdf().set(opt).from(element).save().then(() => {
+        document.querySelector('.download-btn').classList.remove('pdf-hide');
+    });
+}
 </script>
 
 </body>
 </html>
+
