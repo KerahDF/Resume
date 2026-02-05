@@ -1,180 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kerah D. Farquharson – Resume</title>
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kerah D. Farquharson – Resume</title>
+<style>
+    /* Base Styles */
+    body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        margin: 0;
+        background-color: #f4f4f4;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 30px auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    header img {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 25px;
+        border: 3px solid #004d99;
+        transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+        transform: scale(1.05);
+    }
+
+    header h1 {
+        font-size: 36px;
+        color: #004d99;
+        margin: 0;
+    }
+
+    .contact {
+        font-size: 14px;
+        color: #555;
+        margin-top: 5px;
+    }
+
+    h2 {
+        font-size: 24px;
+        color: #004d99;
+        border-bottom: 2px solid #004d99;
+        padding-bottom: 5px;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        transition: color 0.3s ease;
+    }
+
+    h2:hover {
+        color: #ff6600;
+    }
+
+    h3 {
+        font-size: 18px;
+        color: #004d99;
+        margin-top: 15px;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 8px;
+    }
+
+    .job-title {
+        font-weight: bold;
+        color: #004d99;
+    }
+
+    .company-date {
+        font-style: italic;
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 10px;
+    }
+
+    .skills span {
+        display: inline-block;
+        background: #004d99;
+        color: #fff;
+        padding: 4px 10px;
+        margin: 3px;
+        border-radius: 20px;
+        font-size: 13px;
+        transition: background 0.3s ease;
+    }
+
+    .skills span:hover {
+        background: #ff6600;
+    }
+
+    @media print {
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            background: none;
+        }
+        .container {
+            box-shadow: none;
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
+            border-radius: 0;
         }
-
-        .container {
-            max-width: 900px;
-            margin: 30px auto;
-            background: #fff;
-            padding: 40px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        }
-
-        h1, h2, h3 {
-            color: #004d99;
-            margin-bottom: 10px;
-        }
-
-        h1 {
-            font-size: 32px;
-        }
-
-        h2 {
-            font-size: 24px;
-            border-bottom: 2px solid #004d99;
-            padding-bottom: 5px;
-        }
-
-        h3 {
-            font-size: 18px;
-            margin-top: 15px;
-        }
-
-        p {
-            margin: 5px 0;
-        }
-
-        .contact {
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-
-        .section {
-            margin-top: 30px;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 5px;
-        }
-
-        .job-title {
-            font-weight: bold;
-            color: #004d99;
-        }
-
-        .company-date {
-            font-style: italic;
-            font-size: 14px;
-            color: #666;
-        }
-
-        @media print {
-            body {
-                background: none;
-            }
-            .container {
-                box-shadow: none;
-                margin: 0;
-                padding: 0;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Kerah D. Farquharson</h1>
-        <div class="contact">
-            P.O. Box CB-12537, Nassau, Bahamas<br>
-            kdfarquharson@gmail.com | Mobile: 557-2029
+<div class="container">
+    <header>
+        <!-- Add your photo file here (e.g., profile.jpg) -->
+        <img src="profile.jpg" alt="Kerah D. Farquharson Photo">
+        <div>
+            <h1>Kerah D. Farquharson</h1>
+            <div class="contact">
+                P.O. Box CB-12537, Nassau, Bahamas<br>
+                kdfarquharson@gmail.com | Mobile: 557-2029
+            </div>
         </div>
+    </header>
 
-        <div class="section">
-            <h2>Overview</h2>
-            <p>Results-driven, experienced professional in brokerage/trading and customer services. A critical thinker seeking the opportunity to utilize analytical, organizational, and interpersonal skills in an established institution offering growth and potential advancement.</p>
+    <section>
+        <h2>Overview</h2>
+        <p>Results-driven, experienced professional in brokerage/trading and customer services. A critical thinker seeking the opportunity to utilize analytical, organizational, and interpersonal skills in an established institution offering growth and potential advancement.</p>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        <p><strong>Bachelor of Arts in Economics with Minor in Spanish</strong><br>
+        August 2002 – May 2005, Acadia University, Nova Scotia, Canada<br>
+        Concentration: Finance</p>
+
+        <p><strong>Associates Degree in Banking/Finance</strong><br>
+        August 1999 – May 2001, The College of the Bahamas, Nassau, Bahamas</p>
+    </section>
+
+    <section>
+        <h2>Experience</h2>
+
+        <h3 class="job-title">Manager, Investments – Leno Corporate Services</h3>
+        <div class="company-date">May 2019 - Present | Nassau, Bahamas</div>
+        <ul>
+            <li>Perform all administrative functions related to all trade and client accounts including execution trades and phone coverage.</li>
+            <li>Solicitation of transactions through thorough management of client accounts.</li>
+            <li>Open brokerage, retail, margin, and mutual fund accounts.</li>
+            <li>Trading BISX listed and over-the-counter stocks.</li>
+            <li>Track and analyze daily trade volume and trends.</li>
+            <li>Respond to queries of all account officers to ensure professional and timely service is rendered.</li>
+            <li>Ensure accrued interest and dividend payments are accurately calculated, recorded, and posted.</li>
+        </ul>
+
+        <h3 class="job-title">Assistant Manager, Wealth Management – FamGuard Group of Companies</h3>
+        <div class="company-date">Feb 2012 – May 2019 | Nassau, Bahamas</div>
+        <ul>
+            <li>Perform all administrative functions related to all trade and client accounts.</li>
+            <li>Open brokerage, retail, margin, and mutual fund accounts.</li>
+            <li>Group Pension administration.</li>
+            <li>Trading BISX listed and over-the-counter stocks.</li>
+        </ul>
+
+        <h3 class="job-title">Broker/Securities Trader – CFAL</h3>
+        <div class="company-date">Aug 2008 – Feb 2012 | Nassau, Bahamas</div>
+        <ul>
+            <li>Execute securities, FX, and money market trades on behalf of clients.</li>
+            <li>Process contributions, withdrawals, and fund units for all clients.</li>
+            <li>Post fees, monitor risk controls, and complete management reports.</li>
+        </ul>
+
+        <h3 class="job-title">Officer, Market Surveillance Dept. – Securities Commission of the Bahamas</h3>
+        <div class="company-date">Dec 2006 - Aug 2008 | Nassau, Bahamas</div>
+        <ul>
+            <li>Review and analyze financial statements, constitutive and other documents.</li>
+            <li>Respond to market enquiries and prepare status reports.</li>
+        </ul>
+
+        <h3 class="job-title">General Administrative Assistant – Montaque Securities International Ltd.</h3>
+        <div class="company-date">Dec 2005 – Nov 2006 | Nassau, Bahamas</div>
+        <ul>
+            <li>Data entry and responding to client enquiries.</li>
+            <li>Other administrative duties as assigned.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Certificates</h2>
+        <ul>
+            <li>Certified Financial Planner</li>
+            <li>Series 7</li>
+            <li>Introduction to Mutual Funds</li>
+            <li>Professional Development</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Skills</h2>
+        <div class="skills">
+            <span>MS Word</span><span>MS Excel</span><span>MS PowerPoint</span><span>MS Publisher</span><span>MS Outlook</span><span>Advent Software</span><span>Mimics Software</span><span>FA Software</span>
         </div>
+    </section>
 
-        <div class="section">
-            <h2>Education</h2>
-            <p><strong>Bachelor of Arts in Economics with Minor in Spanish</strong><br>
-            August 2002 – May 2005, Acadia University, Nova Scotia, Canada<br>
-            Concentration: Finance</p>
-
-            <p><strong>Associates Degree in Banking/Finance</strong><br>
-            August 1999 – May 2001, The College of the Bahamas, Nassau, Bahamas</p>
-        </div>
-
-        <div class="section">
-            <h2>Experience</h2>
-
-            <h3 class="job-title">Manager, Investments – Leno Corporate Services</h3>
-            <div class="company-date">May 2019 - Present | Nassau, Bahamas</div>
-            <ul>
-                <li>Perform all administrative functions related to all trade and client accounts including execution trades and phone coverage.</li>
-                <li>Solicitation of transactions through thorough management of client accounts.</li>
-                <li>Open brokerage, retail, margin, and mutual fund accounts.</li>
-                <li>Trading BISX listed and over-the-counter stocks.</li>
-                <li>Track and analyze daily trade volume and trends.</li>
-                <li>Respond to queries of all account officers to ensure professional and timely service is rendered.</li>
-                <li>Ensure accrued interest and dividend payments are accurately calculated, recorded, and posted.</li>
-            </ul>
-
-            <h3 class="job-title">Assistant Manager, Wealth Management – FamGuard Group of Companies</h3>
-            <div class="company-date">Feb 2012 – May 2019 | Nassau, Bahamas</div>
-            <ul>
-                <li>Perform all administrative functions related to all trade and client accounts.</li>
-                <li>Open brokerage, retail, margin, and mutual fund accounts.</li>
-                <li>Group Pension administration.</li>
-                <li>Trading BISX listed and over-the-counter stocks.</li>
-            </ul>
-
-            <h3 class="job-title">Broker/Securities Trader – CFAL</h3>
-            <div class="company-date">Aug 2008 – Feb 2012 | Nassau, Bahamas</div>
-            <ul>
-                <li>Execute securities, FX, and money market trades on behalf of clients.</li>
-                <li>Process contributions, withdrawals, and fund units for all clients.</li>
-                <li>Post fees, monitor risk controls, and complete management reports.</li>
-            </ul>
-
-            <h3 class="job-title">Officer, Market Surveillance Dept. – Securities Commission of the Bahamas</h3>
-            <div class="company-date">Dec 2006 - Aug 2008 | Nassau, Bahamas</div>
-            <ul>
-                <li>Review and analyze financial statements, constitutive and other documents.</li>
-                <li>Respond to market enquiries and prepare status reports.</li>
-            </ul>
-
-            <h3 class="job-title">General Administrative Assistant – Montaque Securities International Ltd.</h3>
-            <div class="company-date">Dec 2005 – Nov 2006 | Nassau, Bahamas</div>
-            <ul>
-                <li>Data entry and responding to client enquiries.</li>
-                <li>Other administrative duties as assigned.</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Certificates</h2>
-            <ul>
-                <li>Certified Financial Planner</li>
-                <li>Series 7</li>
-                <li>Introduction to Mutual Funds</li>
-                <li>Professional Development</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Skills</h2>
-            <p>MS Word, MS Excel, MS PowerPoint, MS Publisher, MS Outlook, Advent Software, Mimics Software, FA Software</p>
-        </div>
-
-        <div class="section">
-            <h2>References</h2>
-            <p>Available upon request</p>
-        </div>
-    </div>
+    <section>
+        <h2>References</h2>
+        <p>Available upon request</p>
+    </section>
+</div>
 </body>
 </html>
+
